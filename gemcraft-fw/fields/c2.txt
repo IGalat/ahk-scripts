@@ -1,0 +1,159 @@
+;;; c2
+
+walls := [{x: 315, y: 528}, {x: 345, y: 554, xx: 341, yy: 895}, {x: 791, y: 696}, {x: 793, y: 722}, {x: 819, y: 722}
+    , {x: 819, y: 746}, {x: 622, y: 696}, {x: 622, y: 722}, {x: 710, y: 690}, {x: 708, y: 715}
+    , {x: 767, y: 863, xx: 759, yy: 889}, {x: 821, y: 744}, {x: 845, y: 748}]
+
+manaTraps := [{x: 831, y: 652}, {x: 824, y: 591}, {x: 827, y: 544}, {x: 834, y: 479}, {x: 833, y: 429}
+    , {x: 830, y: 366}, {x: 773, y: 371}, {x: 720, y: 375}, {x: 662, y: 376}
+    , {x: 671, y: 434}, {x: 668, y: 473}, {x: 668, y: 540}, {x: 668, y: 595}, {x: 667, y: 647}]
+
+manaAmps := [{x: 772, y: 653}, {x: 770, y: 593}, {x: 772, y: 539}, {x: 775, y: 480}, {x: 770, y: 429}
+    , {x: 720, y: 428}, {x: 721, y: 481}, {x: 722, y: 534}, {x: 722, y: 588}, {x: 722, y: 636}
+    , {x: 609, y: 647}, {x: 607, y: 594}, {x: 603, y: 527}, {x: 603, y: 475}, {x: 603, y: 429}, {x: 607, y: 370}
+    , {x: 659, y: 317}, {x: 719, y: 316}, {x: 776, y: 316}, {x: 822, y: 316}
+    , {x: 877, y: 377}, {x: 877, y: 432}, {x: 889, y: 486}, {x: 885, y: 533}, {x: 887, y: 588}, {x: 886, y: 640}]
+
+critTowers := []
+
+critTraps := [{x: 664, y: 762}, {x: 660, y: 819}, {x: 656, y: 864}, {x: 604, y: 864}, {x: 549, y: 871}, {x: 494, y: 871}]
+
+critAmps := [{x: 607, y: 765}, {x: 606, y: 809}, {x: 552, y: 810}, {x: 497, y: 819}
+    , {x: 717, y: 764}, {x: 713, y: 817}, {x: 713, y: 874}, {x: 714, y: 921}
+    , {x: 670, y: 921}, {x: 607, y: 924}, {x: 551, y: 927}, {x: 503, y: 927}]
+
+critTowersAssist := [{x: 497, y: 591}]
+
+slowLanterns := [{x: 801, y: 732}, {x: 747, y: 233}]
+
+slowAmps := [{x: 745, y: 702}, {x: 777, y: 787}, {x: 829, y: 788}
+    , {x: 689, y: 200}, {x: 805, y: 231}, {x: 699, y: 257}]
+
+bleedLanterns := [{x: 492, y: 701}]
+
+bleedAmps := [{x: 548, y: 767}, {x: 550, y: 705}, {x: 549, y: 652}, {x: 488, y: 649}
+    , {x: 439, y: 649}, {x: 439, y: 695}, {x: 441, y: 760}, {x: 486, y: 764}]
+
+emptyTowers := []
+
+antiBeaconWalls1 := [{x: 534, y: 359, xx: 535, yy: 381}, {x: 537, y: 524, xx: 537, yy: 541}
+    , {x: 393, y: 924, xx: 422, yy: 921}, {x: 790, y: 915, xx: 1049, yy: 924}, {x: 1062, y: 859}
+    , {x: 901, y: 783, xx: 931, yy: 780}, {x: 1159, y: 526, xx: 1157, yy: 553}, {x: 1182, y: 532, xx: 1183, yy: 548}
+    , {x: 1319, y: 527, xx: 1520, yy: 529}, {x: 1321, y: 554, xx: 1517, yy: 558}, {x: 1068, y: 692, xx: 1193, yy: 693}
+    , {x: 1069, y: 723, xx: 1181, yy: 723}, {x: 1331, y: 697, xx: 1349, yy: 695}, {x: 1325, y: 715, xx: 1354, yy: 715}
+    , {x: 1485, y: 694, xx: 1522, yy: 694}, {x: 1494, y: 715, xx: 1518, yy: 723}, {x: 1265, y: 861, xx: 1516, yy: 860}
+    , {x: 1265, y: 921, xx: 1512, yy: 917}, {x: 604, y: 1032, xx: 1324, yy: 1019}, {x: 822, y: 101}, {x: 814, y: 164}
+    , {x: 1462, y: 1027, xx: 1599, yy: 1034}, {x: 1635, y: 972, xx: 1689, yy: 977}, {x: 1131, y: 186}
+    , {x: 457, y: 1028, xx: 258, yy: 1029}, {x: 256, y: 975}, {x: 255, y: 945}, {x: 226, y: 945}]
+
+antiBeaconWalls2 := [{x: 93, y: 45}, {x: 90, y: 72}, {x: 98, y: 295, xx: 89, yy: 470}
+    , {x: 151, y: 275, xx: 150, yy: 318}, {x: 146, y: 412, xx: 150, yy: 472}, {x: 203, y: 166, xx: 206, yy: 470}
+    , {x: 262, y: 42, xx: 253, yy: 463}, {x: 313, y: 46, xx: 323, yy: 376}, {x: 373, y: 53, xx: 377, yy: 383}
+    , {x: 439, y: 45, xx: 432, yy: 382}, {x: 481, y: 49}, {x: 483, y: 171, xx: 483, yy: 224}, {x: 541, y: 46, xx: 544, yy: 219}
+    , {x: 588, y: 50, xx: 596, yy: 217}, {x: 645, y: 58, xx: 647, yy: 213}, {x: 823, y: 48}, {x: 853, y: 50, xx: 831, yy: 132}
+    , {x: 876, y: 52, xx: 871, yy: 253}, {x: 929, y: 52, xx: 1037, yy: 52}, {x: 924, y: 107, xx: 1042, yy: 108}
+    , {x: 1129, y: 239, xx: 1124, yy: 388}, {x: 1180, y: 211}, {x: 1077, y: 237, xx: 1080, yy: 384}
+    , {x: 1014, y: 239, xx: 1013, yy: 308}, {x: 989, y: 240, xx: 989, yy: 300}, {x: 1186, y: 385, xx: 1602, yy: 386}
+    , {x: 1652, y: 442, xx: 1688, yy: 441}, {x: 1650, y: 462, xx: 1685, yy: 463}, {x: 1653, y: 607, xx: 1688, yy: 606}]
+
+antiBeaconWalls3 := [{x: 1659, y: 637, xx: 1681, yy: 637}, {x: 1653, y: 772, xx: 1660, yy: 842}
+    , {x: 1686, y: 782, xx: 1692, yy: 835}, {x: 1289, y: 328, xx: 1585, yy: 332}, {x: 1297, y: 268, xx: 1574, yy: 278}
+    , {x: 1405, y: 221}, {x: 1433, y: 214, xx: 1437, yy: 45}, {x: 1484, y: 46, xx: 1681, yy: 45}, {x: 1499, y: 87, xx: 1682, yy: 83}
+    , {x: 1658, y: 131, xx: 1660, yy: 220}, {x: 1690, y: 132, xx: 1691, yy: 206}, {x: 935, y: 444, xx: 932, yy: 640}
+    , {x: 85, y: 868, xx: 85, yy: 774}, {x: 92, y: 620, xx: 86, yy: 642}, {x: 147, y: 609, xx: 146, yy: 633}
+    , {x: 200, y: 608, xx: 195, yy: 653}, {x: 256, y: 809, xx: 255, yy: 611}, {x: 224, y: 808, xx: 229, yy: 717}]
+
+
+antiBeaconWalls := []
+antiBeaconWalls.push(antiBeaconWalls1*)
+antiBeaconWalls.push(antiBeaconWalls2*)
+antiBeaconWalls.push(antiBeaconWalls3*)
+
+;;; hotkeys
+
+^F9:: ; ctrl+F9. mana setup
+    Sleep 50
+    buildWalls(walls)
+    buildTraps(manaTraps)
+    buildAmps(manaAmps)
+    fillCopies(manaTraps)
+    fillCopies(manaAmps, true)
+    spellFirstXWithShift(manaTraps, 6, 2)
+    changePrio(manaTraps, 3)
+    return
+
++F9:: ; shift+F9
+    fillCopies(manaTraps)
+    fillCopies(manaAmps, true)
+    spellFirstXWithShift(manaTraps, 6, 2)
+    changePrio(manaTraps, 3)
+    return
+
+^F10:: ; crit setup
+    buildTraps(critTraps)
+    buildAmps(critAmps)
+    fill(critAmps, gems.crit)
+    fill(critTraps, gems.crit, 4)
+    return
+
+^F11:: ; support setup
+    buildWalls(antiBeaconWalls)
+    buildTowers(emptyTowers)
+
+    buildLanterns(slowLanterns)
+    buildAmps(slowAmps)
+    fill(slowLanterns, gems.slow)
+    fill(slowAmps, gems.slow, 6)
+    changePrio(slowLanterns, 4)
+
+    buildTowers(critTowersAssist)
+    fill(critTowersAssist, gems.crit)
+    changePrio(critTowersAssist, 5)
+
+    buildAmps(bleedAmps)
+    fill(bleedAmps, gems.bleed)
+    buildLanterns(bleedLanterns)
+    return
+
+^F12:: ; all setup
+    GoSub ^F9
+    GoSub ^F10
+    GoSub ^F11
+    return
+
+F8:: ; bleed upgrade
+    upgradeU(bleedAmps)
+    upgradeU(bleedLanterns)
+    return
+
+F9:: ; mana upgrade
+    upgrade(manaTraps)
+    upgrade(manaAmps)
+    return
+
+F10:: ; crit upgrade
+    upgradeU(critTowersAssist)
+    upgradeU(critTraps)
+    upgradeU(critAmps)
+    upgradeU(critTowers)
+    return
+
+F11:: ; support upgrade
+    upgradeU(slowAmps)
+    return
+
+F12:: ; all upgrade
+    GoSub F9
+    GoSub F10
+    GoSub F11
+    return
+
+!F9:: ; alt+F9. Sell all managems
+    sell(manaTraps)
+    sell(manaAmps)
+    return
+
+!F10:: ; sell critgems that matter
+    sell(critTraps)
+    sell(critAmps)
+    return

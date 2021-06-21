@@ -1,0 +1,86 @@
+;;; a6-tali-farm
+
+manaTraps := [{x: 1639, y: 138}
+    , {x: 1582, y: 138}
+    , {x: 1530, y: 145}
+    , {x: 1524, y: 192}
+    , {x: 1537, y: 254}
+    , {x: 1576, y: 249}
+    , {x: 1641, y: 257}
+    , {x: 1628, y: 318}
+    , {x: 1636, y: 359}
+    , {x: 1585, y: 367}
+    , {x: 1531, y: 368}]
+
+manaAmps := [{x: 1583, y: 204}
+    , {x: 1643, y: 198}
+    , {x: 1578, y: 301}
+    , {x: 1523, y: 311}]
+
+critTowers := [{x: 464, y: 783}]
+
+critAmps := [{x: 471, y: 736}
+    , {x: 514, y: 741}
+    , {x: 517, y: 782}
+    , {x: 512, y: 839}
+    , {x: 462, y: 835}
+    , {x: 411, y: 842}
+    , {x: 417, y: 784}
+    , {x: 409, y: 738}]
+
+critTowersAssist := [{x: 1641, y: 729}]
+
+slowLanterns := [{x: 1474, y: 249}
+    , {x: 1700, y: 261}]
+
+slowAmps := []
+
+;;; hotkeys
+
+^F9:: ; mana setup
+    buildTraps(manaTraps)
+    buildAmps(manaAmps)
+    fill(manaTraps, gems.mana, initGrade + 1)
+    fill(manaAmps, gems.mana, initGrade + 2)
+    return
+
+^F10:: ; crit setup
+    buildTowers(critTowers)
+    buildTowers(critTowersAssist)
+    buildAmps(critAmps)
+    fill(critAmps, gems.crit, initGrade)
+    fill(critTowersAssist, gems.crit, initGrade)
+    fill(critTowers, gems.crit, initGrade + 2)
+    return
+
+^F11:: ; slow setup
+    buildLanterns(slowLanterns)
+    fill(slowLanterns, gems.slow, 1)
+    changePrio(slowLanterns, 4)
+    return
+
+^F12:: ; all setup
+    GoSub ^F9
+    GoSub ^F10
+    GoSub ^F11
+    return
+
+F9:: ; mana upgrade
+    upgrade(manaTraps)
+    upgrade(manaAmps)
+    return
+
+F10:: ; crit upgrade
+    upgrade(critTowersAssist)
+    upgrade(critAmps)
+    upgrade(critTowers)
+    return
+
+F11:: ; slow upgrade
+    return
+
+F12:: ; all upgrade
+    GoSub F9
+    GoSub F10
+    GoSub F11
+    return
