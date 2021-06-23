@@ -17,14 +17,17 @@ initialManaAmps := []
 ; when a single mana trap is up, this hits mobs before it
 initialWhiteoutSpot := []
 
+; {gradeOfBomb : [{x, y}, {x, y}]} ; example: {5: [{x: 1549, y: 165}]}
+initialDemolitions := {1: []}
+
+; with main setup
+secondaryDemolitions := {1: []}
+
+; right after selling initial gems. This is to get rid of initial if it's in the way
+tertiaryDemolitions := {1: []}
+
 ; just general mob-directing
 structuralWalls := []
-
-; for fliers, spires, wisard hunters etc. Not filled/upgraded automatically. Usually built near crit or bleed amps
-antiSpecialTowers := []
-
-; for future slow or bleed
-emptyLanterns := []
 
 manaTraps := []
 
@@ -64,6 +67,12 @@ slowAmps := []
 bleedLantern := []
 
 bleedAmps := []
+
+; for future slow or bleed
+emptyLanterns := []
+
+; for fliers, spires, wisard hunters etc. Not filled/upgraded automatically. Usually built near crit or bleed amps
+antiSpecialTowers := []
 
 ; in the middle of mana farm
 secondSpellSpot := []

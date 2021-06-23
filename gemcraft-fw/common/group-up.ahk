@@ -18,3 +18,7 @@ antiBeaconWalls.push(antiBeaconWalls2*)
 antiBeaconWalls.push(antiBeaconWalls3*)
 antiBeaconWalls.push(antiBeaconWalls4*)
 antiBeaconWalls.push(antiBeaconWalls5*)
+
+; shouldn't be here, but eh
+; true = 32s bleed/slow in the lantern ; false = pure bleed. for high WL dual is good
+dualBleedSlow := ampSkillLevel >= 200

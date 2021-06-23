@@ -18,6 +18,7 @@ F12::
     sell(initialManaTraps)
     sell(initialManaAmps)
     initGemsActive := false
+    demolishAll(tertiaryDemolitions)
     return
 
 ; initial placement: walls, trap, whiteout, enrage gem
@@ -25,6 +26,7 @@ F12::
     initGemsActive := true
     removeSpellMarkers([1, 2, 3])
 
+    demolishAll(initialDemolitions)
     buildWalls(initialWalls)
     buildTowers(initialTowers)
     buildTraps(initialManaTraps)
@@ -53,6 +55,7 @@ F12::
         GoSub !F12 ; sell init
     }
 
+    demolishAll(secondaryDemolitions)
     placeSpellMarker(secondSpellSpot, 2)
 
     buildWalls(structuralWalls)
@@ -81,10 +84,11 @@ F12::
         GoSub +^F9 ; copyByDeltas(critGemsGraded)
     }
 
-    fillMulti([slowAmps, slowLanterns], gems.slow, 4)
-    changePrio(slowLanterns, gemPrio.downRight)
+    fill(slowAmps, gems.slow, 7)
+    fill(slowLanterns, gems.slow)
+    changePrio(slowLanterns, gemPrio.down)
 
-    fill(bleedAmps, gems.bleed)
+    GoSub #F6 ; bleed : if dual, fill lantern+amps, else only amps
 
     upgradeU(enrageGem, 6)
 

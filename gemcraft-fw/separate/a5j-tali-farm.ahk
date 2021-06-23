@@ -13,6 +13,14 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #Include ..\common\gems.ahk
 #Include ..\common\unit-test-frame.ahk
 
+timesToFarm := 10
+
+initLevel := 12
+critGemLevel := 20
+
+
+
+
 walls := [{x: 1606, y: 329, xx: 1598, yy: 103}, {x: 1653, y: 78, xx: 1658, yy: 308}, {x: 1545, y: 103, xx: 1545, yy: 82}
     , {x: 1305, y: 328, xx: 1301, yy: 117}, {x: 1319, y: 112, xx: 1353, yy: 111}, {x: 1241, y: 113, xx: 1236, yy: 265}]
 
@@ -22,60 +30,62 @@ amps := [{x: 1479, y: 202}, {x: 1423, y: 142}, {x: 1531, y: 148}, {x: 1533, y: 2
 
 towers := [{x: 1360, y: 203}]
 
+towersSide:= [{x: 1477, y: 91}]
+
 spellMarkerSpot := [{x: 1617, y: 206}]
 
 backToTheMap := [{x: 1715, y: 981}]
 
+allGems := [lanterns, amps, towers, towersSide]
 
-Numpad4:: ; setup
-    buildWalls(walls)
-    buildLanterns(lanterns)
-    buildAmps(amps)
-    buildTowers(towers)
 
-    createDualGem(gems.mana, gems.crit, 10)
-    fillCopies(lanterns)
-    fillCopies(amps)
-    fillCopies(towers, true)
-    changePrio(towers, gemPrio.downLeft)
+Numpad4::
+    if (timesToFarm > 12) {
+        return
+    }
 
-    placeSpellMarker(spellMarkerSpot, 1)
-    placeSpellMarker(spellMarkerSpot, 2)
-    placeSpellMarker(spellMarkerSpot, 3)
+    farmLoopIndex := 0
+    Loop, %timesToFarm% {
+        farmLoopIndex := farmLoopIndex + 1
+        buildWalls(walls)
+        buildLanterns(lanterns)
+        buildAmps(amps)
+        buildTowers(towers)
+        buildTowers(towersSide)
 
-    sendAllWaves()
-    launch3xSpeed()
-    moveMouseOutOfTheWay()
+        createDualGem(gems.mana, gems.crit, initLevel)
+        copyMulti(allGems)
+        changePrio(towers, gemPrio.down)
+        changePrio(towersSide, gemPrio.downLeft)
 
-    ; upgrade
-    sleep 9000
-    pauseGame()
-    upLevels := 7
-    upgradeU(lanterns, upLevels)
-    upgradeU(amps, upLevels)
-    upgradeU(towers, upLevels)
-    Send, {Space}
-    moveMouseOutOfTheWay()
+        placeSpellMarker(spellMarkerSpot, 1)
+        placeSpellMarker(spellMarkerSpot, 2)
+        placeSpellMarker(spellMarkerSpot, 3)
 
-    ; swap for crit
-    sleep 9000
-    pauseGame()
-    sell(lanterns)
-    sell(amps)
-    sell(towers)
-    createGem(gems.crit, 20)
-    fillCopies(lanterns)
-    fillCopies(amps)
-    fillCopies(towers, true)
-    changePrio(towers, gemPrio.downLeft)
-    Send, {Space}
-    moveMouseOutOfTheWay()
-    return
+        sendAllWaves()
+        launch3xSpeed()
+        moveMouseOutOfTheWay()
+        sleep 10000
 
-Numpad5:: ; restart
-    Click 1744 981 ; "Back to the map"
-    sleep 5000
-    Click 959 535 ; "Center of the map, the field is there after a round
-    sleep 1500
-    Click 1434 882 ; "Start the battle"
+        ; swap for crit
+        pauseGame()
+        sellMulti(allGems)
+        fillMulti(allGems, gems.crit, critGemLevel)
+        changePrio(towers, gemPrio.down)
+        changePrio(towersSide, gemPrio.downLeft)
+        Send, {Space}
+        moveMouseOutOfTheWay()
+        sleep 25000
+        Click 1744 981 ; "Back to the map"
+        sleep 5000
+
+        if ( farmLoopIndex = timesToFarm ) {
+            return
+        }
+
+        Click 959 535 ; "Center of the map, the field is there after a round
+        sleep 1500
+        Click 1434 882 ; "Start the battle"
+        sleep 8000
+    }
     return

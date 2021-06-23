@@ -55,3 +55,9 @@ demolish(xyArray, grade) {
     }
     sellGemInInventory()
 }
+
+demolishAll(gradeDemolitionMap) {
+    for _key, _value in gradeDemolitionMap {
+        demolish(_value, _key)
+    }
+}

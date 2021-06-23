@@ -45,14 +45,14 @@ setSkillValue(skill, value) {
     Send {Shift Down}
 	Loop, %tenX%
 	{
-		sleep 30
+		sleep 50
 		Click, WheelUp
 	}
 	Send {Shift Up}
 
 	Loop, %oneX%
 	{
-		sleep 30
+		sleep 50
 		Click, WheelUp
 	}
 }
@@ -85,24 +85,15 @@ addMap(skillCoordinates, skillCoordinates4)
 
 ;;
 
-regularSkills := {manastream: 50
-                , orbOfPresense: 50
-                , fusion: 50
-                , whiteout: 50
-                , iceShards: 50
-                , fury: 50
-                , seekerSense: 50
-                , barrage: 50
-                , lanterns: 20
-                , trueColors: 330
-                , resonance: 100
-                , crit: 140
-                , mana: 390
-                , amplifiers: 205
-                , traps: 304}
+regularSkills := {manastream: 50, orbOfPresense: 50, fusion: 50, freeze: 50, whiteout: 50, iceShards: 50, barrage: 50, fury: 50, lanterns: 50, seekerSense: 50
+                , trueColors: 494, resonance: 154
+                , crit: 210, mana: 605
+                , amplifiers: 385, traps: 461}
 
-talismanFarmSkills := {manastream: 40, orbOfPresense: 50, fusion: 50, lanterns: 50, seekerSense: 50
-    , crit: 240, mana: 395, amplifiers: 280, trueColors: 340, resonance: 160}
+talismanFarmSkills := {manastream: 50, orbOfPresense: 50, fusion: 50, lanterns: 50, seekerSense: 50
+    , trueColors: 500, resonance: 310
+    , crit: 450, mana: 560
+    , amplifiers: 430}
 
 
 Numpad9::

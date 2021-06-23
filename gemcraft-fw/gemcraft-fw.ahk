@@ -11,9 +11,9 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
 ;; CHANGE THIS:
 
-ampSkillLevel := 205
-
-#Include fields\i3.ahk
+ampSkillLevel := 445
+;; finished setups for: i3, a5, d4, f2
+#Include fields\a5.ahk
 
 ;;
 

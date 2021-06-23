@@ -67,6 +67,10 @@ sell(xyArray) {
     }
 }
 
+sellMulti(arrayOfArrays){
+    sell(flatten(arrayOfArrays))
+}
+
 createGem(type, grade := 1, invSlot := 1) {
     xCoord := type.x
     yCoord := type.y
@@ -182,15 +186,15 @@ combineGemsInInventory(slotFrom, slotTo) {
     CLick %xTo% %yTo% Up
 }
 
-; gradeDiff if not 1:1. gradeDiff 4 means c32 with 1/31 of type2
+; gradeDiff if not 1:1. gradeDiff 4 means 32s with 1/32 of type2
 createDualGem(type1, type2, gradeResult, gradeDiff := 0) {
     merges := gradeDiff + 1
     _grade := gradeResult - merges
-    if (_grade < 1) {
-        err("createDualGem start grade < 1")
+    if (_grade < 1) { ; gradeResult < gradeDiff + 2
+        err("createDualGem: impossible to create dual with gradeDiff " gradeDiff "and gradeResult " gradeResult)
     }
     createGem(type2, _grade, 1)
-    
+
     Loop, %merges% {
         createGem(type1, _grade, 2)
         combineGemsInInventory(2, 1)
