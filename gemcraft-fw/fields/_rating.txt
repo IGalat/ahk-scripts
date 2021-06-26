@@ -4,7 +4,7 @@ f1 - 7/10 hard setup
 f2 - 8/10, got e14 exp
 c2 - 8/10, got e12 exp
 a4 - 8/10
-a5 - 9/10, got e13 exp
+a5 - 9/10, got e15 exp
 a6 - 8/10
 d4 - 10/10, got e14 exp
 b3 - 7/10
