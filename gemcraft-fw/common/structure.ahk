@@ -1,29 +1,29 @@
 buildTraps(xyArray) {
-    Send, r
+    keyPress("r")
     clickArray(xyArray)
-    Send, r
+    keyPress("r")
 }
 
 buildAmps(xyArray) {
-    Send, a
+    keyPress("a")
     clickArray(xyArray)
-    Send, a
+    keyPress("a")
 }
 
 buildTowers(xyArray) {
-    Send, t
+    keyPress("t")
     clickArray(xyArray)
-    Send, t
+    keyPress("t")
 }
 
 buildLanterns(xyArray) {
-    Send, l
+    keyPress("l")
     clickArray(xyArray)
-    Send, l
+    keyPress("l")
 }
 
 buildWalls(wallsArray) {
-    Send, w
+    keyPress("w")
     for index, item in wallsArray {
         xCoord := wallsArray[index].x
         yCoord := wallsArray[index].y
@@ -36,7 +36,7 @@ buildWalls(wallsArray) {
             Click %xCoord% %yCoord%
         }
     }
-    Send, w
+    keyPress("w")
 }
 
 
@@ -46,7 +46,7 @@ demolish(xyArray, grade) {
     }
     global gems
     createGem(gems.crit, grade)
-    Send, b
+    keyPress("b")
     for index, item in xyArray {
         xCoord := xyArray[index].x
         yCoord := xyArray[index].y

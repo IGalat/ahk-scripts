@@ -16,7 +16,7 @@ upgradeU(xyArray, times := 1) {
         MouseMove, %xCoord%, %yCoord%
         Loop, %times%
         {
-            Send, u
+            keyPress("u")
         }
     }
 }
@@ -31,7 +31,7 @@ upgradeGemsmith(xyArray, times := 1) {
         MouseMove, %xCoord%, %yCoord%
         Loop, %times%
         {
-            Send, {Home}
+            keyPress("Home")
         }
     }
 }
@@ -46,7 +46,7 @@ upgradeGemInInventory(times, invSlot := 1) {
     MouseMove, %xCoord%, %yCoord%
     Sleep 10
     Loop %times% {
-        Send, u
+        keyPress("u")
     }
 }
 
@@ -55,7 +55,7 @@ sellGemInInventory(invSlot := 1) {
     xCoord := inventorySlots[invSlot].x
     yCoord := inventorySlots[invSlot].y
     MouseMove, %xCoord%, %yCoord%
-    Send, x
+    keyPress("x")
 }
 
 sell(xyArray) {
@@ -63,7 +63,7 @@ sell(xyArray) {
         xCoord := xyArray[index].x
         yCoord := xyArray[index].y
         MouseMove, %xCoord%, %yCoord%
-        Send, x
+        keyPress("x")
     }
 }
 
@@ -89,7 +89,7 @@ fill(xyArray, type, grade := 1) {
         Sleep 50
         Click, %xCoord% %yCoord%
         if (index != xyArray.MaxIndex()) {
-            Send, d
+            keyPress("d")
         }
     }
 }
@@ -107,10 +107,10 @@ fillCopies(xyArray, useLast := false) {
 
         if (useLast) {
             if (index != xyArray.MaxIndex()) {
-                Send, d
+                keyPress("d")
             }
         } else {
-            Send, d
+            keyPress("d")
         }
     }
 }
@@ -181,7 +181,7 @@ combineGemsInInventory(slotFrom, slotTo) {
     xTo := inventorySlots[slotTo].x
     yTo := inventorySlots[slotTo].y
 
-    Send, g
+    keyPress("g")
     Click %xFrom% %yFrom% Down
     CLick %xTo% %yTo% Up
 }

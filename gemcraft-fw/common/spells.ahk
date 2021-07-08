@@ -5,7 +5,7 @@ castEnchancementSpell(xyArray, spellNumber) {
 
         MouseMove, %xCoord%, %yCoord%
         Sleep 20
-        Send, %spellNumber%
+        keyPress("%spellNumber%")
     }
 }
 
@@ -13,7 +13,7 @@ castStrikeSpell(xyArray, spellNumber) {
     for index, item in xyArray {
         xCoord := xyArray[index].x
         yCoord := xyArray[index].y
-        Send, %spellNumber%
+        keyPress("%spellNumber%")
         Sleep 20
         Click, %xCoord% %yCoord%
     }
@@ -62,6 +62,6 @@ spellFirstXWithShift(xyArray, spellNumber, x, shift:=0) {
 
         MouseMove, %xCoord%, %yCoord%
         Sleep 20
-        Send, %spellNumber%
+        keyPress("%spellNumber%")
     }
 }

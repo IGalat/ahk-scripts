@@ -105,3 +105,9 @@ moveMouseOutOfTheWay() {
 moveMouseToTheMiddle() {
     MouseMove, 839, 527
 }
+
+keyPress(key) {
+    Send, {%key% down}
+    Sleep 20
+    Send, {%key% up}
+}
